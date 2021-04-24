@@ -21,4 +21,10 @@ public class UserService implements IUserService {
 	public List<User> getAllUsers() {
 		return userRestClient.getAllUsers();
 	}
+
+	@Override
+	public User getUserById(Long userId) {
+		return userRestClient.getUserById(userId);
+	}
+
 }

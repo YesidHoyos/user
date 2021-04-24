@@ -19,6 +19,8 @@ public class UserRestClient implements IUserRestClient {
 
 	private static final String FIND_ALL_URL = "https://jsonplaceholder.typicode.com/users";
 	private static final String FIND_USERS_ERROR = "Ocurrió un error al momento de consumir los datos de todos los usuarios";
+	private static final String USER_BY_ID_URL = "https://jsonplaceholder.typicode.com/users/%s";
+	private static final String FIND_USER_ERROR = "Ocurrió un error al momento de consumir los datos para el usuario con id %s";
 	
 	private RestTemplate restTemplate;
 
@@ -41,5 +43,16 @@ public class UserRestClient implements IUserRestClient {
 		}
 		
 		return response.getBody();
+	}
+	
+	@Override
+	public User getUserById(Long userId) {
+		User user = new User();
+		try {
+			user = restTemplate.getForObject(String.format(USER_BY_ID_URL, userId), User.class);
+		} catch (RestClientException e) {
+			throw new UserRestClientException(String.format(FIND_USER_ERROR, userId), e);
+		}
+		return user;
 	}
 }
