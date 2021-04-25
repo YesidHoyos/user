@@ -30,7 +30,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
 		Map<String, String> response = new HashMap<>();
 		response.put("message", excepcion.getMessage());
 		response.put("cause", excepcion.getCause().getMessage());
-        return handleExceptionInternal(excepcion, response, new HttpHeaders(), HttpStatus.NOT_FOUND, request);		
+        return handleExceptionInternal(excepcion, response, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);		
 	}
 
 }
