@@ -1,4 +1,4 @@
-package com.woloxgram.user.service.databuilder;
+package com.woloxgram.user.databuilder;
 
 import com.woloxgram.user.model.Address;
 import com.woloxgram.user.model.Company;
