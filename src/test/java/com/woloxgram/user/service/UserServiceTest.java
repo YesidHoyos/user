@@ -40,7 +40,7 @@ class UserServiceTest {
 		when(userRestClient.getAllUsers()).thenReturn(usersExpected);
 		
 		//act
-		List<User> users = userRestClient.getAllUsers();
+		List<User> users = userService.getAllUsers();
 		
 		//assert
 		Assertions.assertTrue(users.contains(leanne));
@@ -53,7 +53,7 @@ class UserServiceTest {
 		
 		//act
 		try {
-			userRestClient.getAllUsers();
+			userService.getAllUsers();
 			fail();
 		} catch (Exception e) {
 			//assert
@@ -68,7 +68,7 @@ class UserServiceTest {
 		when(userRestClient.getUserById(ArgumentMatchers.anyLong())).thenReturn(leanne);
 		
 		//act
-		User user = userRestClient.getUserById(1L);
+		User user = userService.getUserById(1L);
 		
 		//assert
 		Assertions.assertEquals(leanne, user);
@@ -81,7 +81,7 @@ class UserServiceTest {
 		
 		//act
 		try {
-			userRestClient.getUserById(1L);
+			userService.getUserById(1L);
 			fail();
 		} catch (Exception e) {
 			//assert
