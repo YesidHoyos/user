@@ -21,7 +21,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
 	public ResponseEntity<Object> userRestClientException(UserRestClientException excepcion, WebRequest request) {
 		Map<String, String> response = new HashMap<>();
 		response.put("message", excepcion.getMessage());
-		response.put("cause", excepcion.getCause().getMessage());
+		response.put("cause", excepcion.getCause()==null?null:excepcion.getCause().getMessage());
         return handleExceptionInternal(excepcion, response, new HttpHeaders(), HttpStatus.BAD_GATEWAY, request);		
 	}
 	
@@ -29,7 +29,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
 	public ResponseEntity<Object> genericException(MethodArgumentTypeMismatchException excepcion, WebRequest request) {
 		Map<String, String> response = new HashMap<>();
 		response.put("message", excepcion.getMessage());
-		response.put("cause", excepcion.getCause().getMessage());
+		response.put("cause", excepcion.getCause()==null?null:excepcion.getCause().getMessage());
         return handleExceptionInternal(excepcion, response, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);		
 	}
 
